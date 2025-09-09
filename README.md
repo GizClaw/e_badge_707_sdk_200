@@ -1,92 +1,162 @@
-# e_badge_707_sdk_200
+# 下载链接
+
+## 最新版本信息
+
+- 支持707设备之间互传静态图片和gif图片
+- 支持手机下载静态图片和gif图片到设备（需要更新app sdk）
+- 支持手机下载图片与设备互传图片统一管理
+- 支持左右划切换图片
+- 支持上拉下拉菜单
 
 
 
-## Getting started
+基于lite版本sdk：https://www.kdocs.cn/l/cn9aCqk1G8EH（版本比较旧，不建议用，正在更新）
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+基于标准版200patch04：https://www.kdocs.cn/l/cvCVoYvpRSK2
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+使用demo时，首先要修改lcd驱动到对应版本！
 
-## Add your files
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+
+# 需求分析
+
+- 手机传图给设备
+  - 包括静态图片和gif图片
+  - 设备端能够管理和显示图片壁纸，并且做增删功能
+  - 壁纸轮播功能，包括顺序轮播和随机轮播
+  - 下拉菜单功能（客户使用公版sdk的耳机舱代码，没有下拉菜单）
+- 设备之间互传
+- 基于sdk 200 patch04或者lite版本
+
+# 使用说明
+
+## 默认壁纸加载
+
+默认壁纸指的是软件烧录进去的壁纸，需要到sdk截图所示的路径下，将图片资源放置到images，点击run生成壁纸文件，gif跟正常壁纸的打包是一样的，生成的文件下载到设备上，可以被扫描显示
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/I34DATZCAAAAA?)
+
+
+
+打包资源时，将vie文件打包进去即可，背景图管理会扫描并加入到壁纸管理链表
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/OHJB6TZCACAG6?)
+
+
+
+## app下载壁纸
+
+使用杰理测试工具或者宜动健康下载壁纸即可，固件端已做好壁纸的资源统一管理，要注意下载的壁纸不能是重名文件，否则现在的规则会删除旧的重名壁纸，不过这个是可以配置的，用户也可修改为对重名文件进行重命名而非删除
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/3SZYEFJCAAQFI?)
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/OTUIEFJCABQE6?)
+
+## 壁纸互传
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/VTXIGFJCADQHA?)
+
+
+
+单击上图按键，可以开启设备扫描，用户也可以自定义其他方式进行扫描开启，只需要调用下图接口即可
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/YFWX2FJCAAQFQ?)
+
+扫描后会自动连接另一个设备，默认使用名字去连接，要连接的名字在这里配置
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/NIDVWWJCABAC4?)
+
+互传成功后会同步壁纸，效果如图
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/7AAYOFJCADAHY?)
+
+
+
+# 开发说明
+
+## 壁纸资源管理
+
+使用功能宏TCFG_JL_WALLPAPER_ENABLE控制代码使能，使用链表管理壁纸配置资源，主要是壁纸文件的路径管理，实现壁纸的增删和设置
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/DJ4CITZCADQGC?)
+
+
+
+## 开机扫描壁纸
+
+开机时会扫描烧录进去的壁纸（按文件名扫描，所以要做到文件名的统一）
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/6TTUATZCACAE2?)
+
+## 壁纸配置加载
+
+当有壁纸增删时，会对壁纸配置进行保存，下次开机时会加载配置，这块通过一个配置文件来实现
+
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/QNLDOTZCACQDQ?)
+
+## 壁纸增删
+
+提供了壁纸的增删接口，杰理测试工具暂时不支持该功能，需要客户app开发使用rcsp自定义指令或者自定义蓝牙协议实现调用
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.zh-jieli.com/e_badge/e_badge_707_sdk_200.git
-git branch -M main
-git push -uf origin main
+// 增加壁纸
+int jl_wallpaper_add(const char* path, int path_length);
+// 设置壁纸
+void jl_wallpaper_set_by_name(char* name);
+// 删除当前壁纸
+int jl_wallpaper_remove_using();
 ```
 
-## Integrate with your tools
+## app壁纸下载
 
-- [ ] [Set up project integrations](https://gitlab.zh-jieli.com/e_badge/e_badge_707_sdk_200/-/settings/integrations)
+下载数据走的是rcsp的文件下载，下载后进行壁纸文件的添加和使能
 
-## Collaborate with your team
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/EDDECTZCADAHY?)
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
+## 轮播机制
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+包括无轮播、顺序轮播、随机轮播，使用定时器进行轮播，通过WALLPAPER_CAROUSEL_TIME_INTERVAL控制轮播时两个壁纸之间切换的间隔，无轮播时，定时器会被删除
 
-***
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/FU6DMTZCAAQCG?)
 
-# Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## 管理数据持久化
 
-## Name
-Choose a self-explaining name for your project.
+管理数据持久化，就是配置变化时存储到flash，开机时能读取配置，目前增删壁纸、配置使用壁纸时会触发持久化操作，主要流程为删除旧的配置，保存新的配置，用户左右划动切换壁纸时，对flash的操作比较频繁，可以考虑优化为在关机时、断电时存储
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+```
+// 壁纸配置保存到flash
+static int jl_wallpaper_save(linked_list_t* list);
+// 壁纸配置从flash加载
+static int jl_wallpaper_load(linked_list_t* list);
+```
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## gif壁纸
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### 默认壁纸使用gif
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+跟正常壁纸一样，使用这个工具打包即可
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+![img](http://www.kdocs.cn/api/v3/office/copy/WFRZS3hIcUl3djdwazdjVTY2TzFJV1djbTVCdWU0cXNFNUxaL20yVjlMQk5acmtqSkxzTGlHSlRBdHdFelQrQlpnRHBpeDJFTzZxRGFoZ2s2T1luSk1rVjZYbzhOOTJGdm14V3FXenFXaWtPRldyTWFTSmp2UDhKQ0VmMDVhTGhVd2NIbnUzVGVEQXNwN08xQXB1RFJTYTdpdUNzRFA5RFdveWxVdXRJeTdQV3hBRGdGM2YxYS8vdWpKcjlmWGlqZ2NYNElSUTVUNVhqaks0R0lGMEJUTHVrbTkrRGFlOUdFa29Qem4vbTdyZGdiNzhNNk9XcDN4MkhRRUw0UHlDN0hiUkNBUU40QjZZPQ==/attach/object/I34DATZCAAAAA?)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### 在线壁纸使用gif
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+gif壁纸的支持需要app配合，app要压缩gif到杰理支持的格式，相关工具和app sdk可以咨询杰理，其他流程跟静态壁纸一样
 
-## License
-For open source projects, say how it is licensed.
+# 后续优化
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## 壁纸配置持久化时频繁擦写flash的问题
+
+- 考虑去掉路径配置存储，全部改成开机扫描，将下载的壁纸文件全部放入统一的目录
+- 将当前壁纸配置改为关机时和断电时存储
+
+## 壁纸传输速度慢或断言
+
+没做缓存导致，客户可以先进行功能验证，正在开发自定义协议下的缓存进制
