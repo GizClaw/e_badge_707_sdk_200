@@ -1,0 +1,2 @@
+s4_00.png|E:/code/ac707n/normal_patch02/patch02/SDK/cpu/br35/tools/UI工程/ui_320x386_watch/表盘界面/project/config/w0/s4_00.pngbaskslash equal zero else
+config/w0/s4_00.png

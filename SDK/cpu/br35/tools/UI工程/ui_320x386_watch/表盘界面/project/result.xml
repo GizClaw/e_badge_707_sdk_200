@@ -1,0 +1,24 @@
+﻿<?xml version="2.0" encoding="UTF-8"?>
+<Resbuilder>
+    <PageList>
+        <Page id="0">
+            <ColorList>
+                <Color id="0">000000</Color>
+            </ColorList>
+            <PictureList>
+                <Picture format="ARGB8565" id="1" convert_size="4860" compress_size="1485" ratio="30.56%">E:\code\ac707n\normal_patch02\patch02\SDK\cpu\br35\tools\UI工程\ui_320x386_watch\表盘界面\project\config\w0\h4_00.png</Picture>
+                <Picture format="ARGB8565" id="2" convert_size="4500" compress_size="1361" ratio="30.24%">E:\code\ac707n\normal_patch02\patch02\SDK\cpu\br35\tools\UI工程\ui_320x386_watch\表盘界面\project\config\w0\m4_00.png</Picture>
+                <Picture format="ARGB8565" id="3" convert_size="5670" compress_size="1010" ratio="17.81%">E:\code\ac707n\normal_patch02\patch02\SDK\cpu\br35\tools\UI工程\ui_320x386_watch\表盘界面\project\config\w0\s4_00.png</Picture>
+                <Picture format="ARGB8888" id="4" convert_size="492800" compress_size="124160" ratio="25.19%">E:\code\ac707n\normal_patch02\patch02\SDK\cpu\br35\tools\UI工程\ui_320x386_watch\表盘界面\project\config\w0\face_bg_01.png</Picture>
+            </PictureList>
+            <CellList/>
+        </Page>
+        <Page id="1">
+            <ColorList>
+                <Color id="0">000000</Color>
+            </ColorList>
+            <PictureList/>
+            <CellList/>
+        </Page>
+    </PageList>
+</Resbuilder>

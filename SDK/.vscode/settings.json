@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "board_ac707n_demo_global_build_cfg.h": "c",
+        "ble_rcsp_server.h": "c",
+        "multi_protocol_main.h": "c"
+    }
+}

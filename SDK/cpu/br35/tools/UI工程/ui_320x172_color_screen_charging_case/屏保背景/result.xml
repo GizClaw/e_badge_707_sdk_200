@@ -1,0 +1,12 @@
+﻿<?xml version="2.0" encoding="UTF-8"?>
+<Resbuilder>
+    <PageList>
+        <Page id="0">
+            <ColorList/>
+            <PictureList>
+                <Picture format="GIF" id="1" convert_size="150346" compress_size="150346" ratio="100.00%">E:\code\ac707n\normal_patch02\patch02\SDK\cpu\br35\tools\UI工程\ui_320x172_color_screen_charging_case\屏保背景\tmp\VIE6.gif</Picture>
+            </PictureList>
+            <CellList/>
+        </Page>
+    </PageList>
+</Resbuilder>
